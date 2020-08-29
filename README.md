@@ -1,0 +1,1 @@
+Este é um repositório com varios exemplos simples de padrões de projeto
