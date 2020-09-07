@@ -1,3 +1,5 @@
+from calculadora import Soma, Subtrai, Multiplica, Divide, Potencia
+
 class Variaveis:
     def __init__(self, x, y, observers = []):
         self.__x = x
@@ -13,7 +15,7 @@ class Variaveis:
     def notify_observers(self):
         if self.__observers:
             for observador in self.__observers:
-                print(f'A operação {observador.__name__}, com as variaveis {self.__x} e {self.__y}, retornou {observador(self.__x, self.__y)}')
+                print(f'A operação {observador.__name__}, com as variaveis {self.__x} e {self.__y}, retornou {observador(self.__x, self.__y).calcular()}')
             print("")
         else:
             print("Ainda não existem observers!!")
@@ -36,40 +38,27 @@ class Variaveis:
         self.__y = y
         self.notify_observers()
 
-def soma(x, y):
-    return x + y
 
-def subtrai(x, y):
-    return x - y
-
-def multiplica(x, y):
-    return x * y
-
-def divide(x, y):
-    return x / y
-
-def power(x, y):
-    return x ** y
 
 variaveis = Variaveis(65, 12)
 variaveis.notify_observers()
 
-variaveis.register_observer(soma)
+variaveis.register_observer(Soma)
 variaveis.notify_observers()
 
-variaveis.register_observer(subtrai)
+variaveis.register_observer(Subtrai)
 
 variaveis.x = 23
 
-variaveis.register_observer(multiplica)
-variaveis.register_observer(divide)
+variaveis.register_observer(Multiplica)
+variaveis.register_observer(Divide)
 
 variaveis.y = 45
 
-variaveis.unregister_observer(multiplica)
+variaveis.unregister_observer(Multiplica)
 
 variaveis.x = 1
 
-variaveis.register_observer(power)
+variaveis.register_observer(Potencia)
 
 variaveis.x = 6
