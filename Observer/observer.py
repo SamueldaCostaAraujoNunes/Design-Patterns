@@ -39,26 +39,26 @@ class Variaveis:
         self.notify_observers()
 
 
+if __name__ == "__main__":
+    variaveis = Variaveis(65, 12)
+    variaveis.notify_observers()
 
-variaveis = Variaveis(65, 12)
-variaveis.notify_observers()
+    variaveis.register_observer(Soma)
+    variaveis.notify_observers()
 
-variaveis.register_observer(Soma)
-variaveis.notify_observers()
+    variaveis.register_observer(Subtrai)
 
-variaveis.register_observer(Subtrai)
+    variaveis.x = 23
 
-variaveis.x = 23
+    variaveis.register_observer(Multiplica)
+    variaveis.register_observer(Divide)
 
-variaveis.register_observer(Multiplica)
-variaveis.register_observer(Divide)
+    variaveis.y = 45
 
-variaveis.y = 45
+    variaveis.unregister_observer(Multiplica)
 
-variaveis.unregister_observer(Multiplica)
+    variaveis.x = 1
 
-variaveis.x = 1
+    variaveis.register_observer(Potencia)
 
-variaveis.register_observer(Potencia)
-
-variaveis.x = 6
+    variaveis.x = 6
